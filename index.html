@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Заготовки для здоровья | Вера Малыгина</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #F5EFE6;
+      --warm-white: #FBF8F2;
+      --pink: #D4768A;
+      --pink-light: #EDCAD2;
+      --pink-dark: #B85A6D;
+      --yellow: #EDE8A8;
+      --yellow-dark: #D4CE7A;
+      --text: #5B5A5A;
+      --text-mid: #5C4F47;
+      --text-light: #8C7D74;
+      --dark: #F5F2C5;
+      --dark-2: #EDE8A8;
+      --border: rgba(44,36,32,0.08);
+      --shadow: 0 4px 32px rgba(44,36,32,0.08);
+      --shadow-lg: 0 16px 64px rgba(44,36,32,0.14);
+      --r: 20px;
+      --r-sm: 12px;
+      --transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', Trebuchet MS, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    .container { max-width:1180px; margin:0 auto; padding:0 28px; }
+
+    /* Typography */
+    .display {
+      font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .display em { font-style:italic; color:var(--pink); }
+    h2 {
+      font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    h3 { font-size:1.15rem; font-weight:700; line-height:1.3; margin-bottom:0.6rem; }
+    p { font-size:1rem; line-height:1.7; color:var(--text-mid); margin-bottom:1rem; }
+    p:last-child { margin-bottom:0; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items:center; gap:10px;
+      padding: 16px 36px; border-radius: 50px;
+      font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', Trebuchet MS, sans-serif;
+      font-size: 1rem; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: var(--transition); letter-spacing: 0.01em;
+    }
+    .btn-primary {
+      background: var(--pink); color: #FDF3F3;
+      box-shadow: 0 8px 32px rgba(237,139,159,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--pink-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(237,139,159,0.45);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--pink);
+      border: 2px solid var(--pink);
+    }
+    .btn-ghost:hover { background:var(--pink); color:#FDF3F3; transform:translateY(-3px); }
+
+    /* Reveal animation */
+    .reveal { opacity:0; transform:translateY(36px); transition:opacity 0.8s ease,transform 0.8s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:0.1s; }
+    .reveal-delay-2 { transition-delay:0.2s; }
+    .reveal-delay-3 { transition-delay:0.3s; }
+    .reveal-delay-4 { transition-delay:0.4s; }
+
+    /* Header */
+    header {
+      position: fixed; top:0; left:0; width:100%; z-index:1000;
+      padding:14px 0;
+      background: rgba(245,239,230,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .header-inner { display:flex; justify-content:space-between; align-items:center; min-height:62px; }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight:600;
+      color: var(--text); text-decoration: none;
+    }
+    .logo span { color: var(--pink); }
+    nav ul { display:flex; list-style:none; gap:2px; align-items:center; }
+    nav ul li a {
+      color: var(--text-mid); text-decoration: none; font-size:0.88rem; font-weight:600;
+      padding:7px 14px; border-radius:50px; transition:var(--transition);
+    }
+    nav ul li a:hover { color:var(--pink); background:rgba(237,139,159,0.08); }
+    .mobile-btn { display:none; background:none; border:none; font-size:1.4rem; color:var(--text); cursor:pointer; }
+
+    /* Hero */
+    .hero {
+      padding-top: 120px; padding-bottom: 0;
+      background: var(--cream);
+      position: relative; overflow: hidden;
+      min-height: 100vh;
+      display: flex; align-items: center;
+    }
+    .hero-noise {
+      position: absolute; inset:0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none; z-index:0; opacity:0.4;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 480px;
+      gap: 80px; align-items: center;
+      position: relative; z-index:1;
+      width: 100%; padding-bottom:80px;
+    }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--text-mid);
+      line-height: 1.7; margin-bottom: 2.4rem; max-width: 520px;
+    }
+    .hero-stats {
+      display: flex; gap: 32px; margin-bottom: 2.8rem; flex-wrap: wrap;
+    }
+    .hero-stat .num {
+      font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+      font-size: 2.4rem; font-weight: 700;
+      color: var(--text); line-height: 1; margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+    .hero-stat .num span { color: var(--pink); }
+    .hero-stat .lbl { font-size:0.8rem; color:var(--text-light); font-weight:600; line-height:1.3; max-width:100px; }
+    .hero-actions { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:2.4rem; }
+
+    /* Social row */
+    .social-row { display:flex; align-items:center; gap:12px; }
+    .social-row .soc-label { font-size:0.8rem; color:var(--text-light); font-weight:600; }
+    .soc-btn {
+      width:44px; height:44px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--warm-white); border:1px solid var(--border);
+      text-decoration:none; transition:var(--transition);
+      box-shadow:0 2px 8px rgba(44,36,32,0.06);
+    }
+    .soc-btn img { width:26px; height:26px; object-fit:contain; border-radius:50%; }
+    .soc-btn:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(44,36,32,0.12); }
+
+    /* Hero photo */
+    .hero-photo-col { position:relative; }
+    .hero-photo-frame {
+      position: relative;
+      border-radius: 32px; overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 3/4;
+    }
+    .hero-photo-frame img { width:100%; height:100%; object-fit:cover; display:block; }
+    .hero-photo-frame::after {
+      content: ''; position: absolute; inset:0;
+      background: linear-gradient(160deg, transparent 50%, rgba(30,26,23,0.15));
+    }
+    .hero-badge {
+      position: absolute; bottom:28px; left:-24px;
+      background: var(--warm-white); border-radius:18px;
+      padding:16px 22px; box-shadow: var(--shadow-lg);
+      display:flex; align-items:center; gap:14px; z-index:2;
+    }
+    .hero-badge .b-icon {
+      font-size:1.8rem; line-height:1;
+      width:48px; height:48px; background:var(--yellow);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:1.4rem; flex-shrink:0;
+    }
+    .hero-badge .b-text strong { display:block; font-size:1rem; color:var(--pink); font-weight:700; }
+    .hero-badge .b-text span { font-size:0.75rem; color:var(--text-light); }
+    .hero-tag {
+      position: absolute; top:28px; right:-20px;
+      background: var(--pink); color:#FDF3F3;
+      border-radius:50px; padding:10px 18px;
+      font-size:0.78rem; font-weight:700; letter-spacing:0.04em;
+      box-shadow:0 8px 24px rgba(237,139,159,0.4); z-index:2;
+      white-space:nowrap;
+    }
+
+    /* Cards for about-system */
+    .inf-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px; margin-bottom: 48px;
+    }
+    .inf-card {
+      background: rgba(255,255,255,0.55);
+      border-radius: var(--r);
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .inf-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--pink-light));
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .inf-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      background: rgba(255,255,255,0.85);
+    }
+    .inf-card:hover::before { opacity: 1; }
+    .inf-card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .inf-card h3 {
+      color: #5B5A5A;
+      font-size: 1.15rem;
+      margin-bottom: 0.8rem;
+    }
+    .inf-card p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin-bottom: 0.7rem;
+    }
+
+    /* How works */
+    .how { background: var(--cream); padding: 80px 0; }
+    .how-steps {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap:0; margin-top:56px; position:relative;
+    }
+    .how-steps::before {
+      content:''; position:absolute;
+      top:48px; left:16.67%; right:16.67%; height:2px;
+      background: linear-gradient(90deg, var(--pink-light), var(--yellow), var(--pink-light));
+      z-index:0;
+    }
+    .how-step {
+      text-align:center; padding:0 32px; position:relative; z-index:1;
+    }
+    .step-num {
+      width:96px; height:96px; border-radius:50%;
+      background: var(--warm-white); border:2px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size:2rem; font-weight:700; color:var(--pink);
+      margin:0 auto 1.6rem;
+      box-shadow:var(--shadow);
+      transition:var(--transition);
+    }
+    .how-step:hover .step-num {
+      background:var(--pink); color:#FDF3F3;
+      transform:scale(1.08); box-shadow:0 12px 40px rgba(237,139,159,0.35);
+    }
+    .how-step h3 { margin-bottom:0.6rem; color:var(--text); }
+    .how-step p { font-size:0.92rem; }
+
+    /* Food section (ingredients & dishes) */
+    .combo-section { background:var(--warm-white); border-radius:40px; padding:40px; margin:20px 0; }
+    .ingredients-grid, .dishes-grid {
+      display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .ingredient-card, .dish-card { flex: 0 0 auto; }
+    .ingredient-card img, .dish-card img {
+      width: 320px; height: 320px; object-fit: cover; border-radius: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Mobile carousel for food */
+    @media (max-width: 768px) {
+      .ingredients-grid, .dishes-grid {
+        overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; flex-wrap: nowrap;
+        justify-content: flex-start; padding: 0 20px 20px;
+      }
+      .ingredient-card, .dish-card { scroll-snap-align: start; width: 280px; }
+      .ingredient-card img, .dish-card img { width: 280px; height: 280px; }
+      .slider-controls-mobile { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+      .slider-btn-mobile {
+        width: 48px; height: 48px; border-radius: 50%; background: var(--pink-light); border: none;
+        font-size: 1.5rem; cursor: pointer; color: var(--pink); transition: 0.2s;
+      }
+      .slider-btn-mobile:hover { background: var(--pink); color: white; }
+    }
+    @media (min-width: 769px) {
+      .slider-controls-mobile { display: none; }
+    }
+
+    /* Footer */
+    footer {
+      background: #141810; padding: 64px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .foot-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .foot-brand .logo {
+      font-size: 1.4rem; display:block; margin-bottom:1rem; color:#FDF3F3;
+    }
+    .foot-brand p {
+      font-size: 0.88rem; color: rgba(255,255,255,0.35);
+      line-height: 1.6; max-width: 240px;
+    }
+    .foot-col h4 {
+      color: rgba(255,255,255,0.5); font-size:0.72rem;
+      font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+      margin-bottom:1.2rem;
+    }
+    .foot-col ul { list-style:none; }
+    .foot-col ul li { margin-bottom:10px; }
+    .foot-col ul li a {
+      color: rgba(255,255,255,0.4); text-decoration:none;
+      font-size:0.88rem; transition:var(--transition);
+    }
+    .foot-col ul li a:hover { color:var(--pink); }
+    .foot-bottom {
+      padding-top:28px; border-top:1px solid rgba(255,255,255,0.06);
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    }
+    .foot-bottom p { font-size:0.8rem; color:rgba(255,255,255,0.2); margin:0; }
+
+    /* Modal styles (consent and success) */
+    .consent-modal-overlay {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+      z-index: 2500; display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: all .3s;
+    }
+    .consent-modal-overlay.active { opacity:1; visibility:visible; }
+    .consent-modal-window {
+      background: var(--warm-white); border-radius: var(--r); max-width: 480px; width: 92%;
+      padding: 36px 28px 32px; box-shadow: var(--shadow-lg); position: relative;
+      transform: scale(0.9); transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .consent-modal-overlay.active .consent-modal-window { transform: scale(1); }
+    .consent-modal-window .close-consent {
+      position: absolute; top: 14px; right: 18px;
+      font-size: 26px; cursor: pointer; color: var(--text-light);
+      background: none; border: none; line-height: 1;
+    }
+    .consent-modal-window h3 {
+      font-size: 1.6rem; color: var(--pink); margin-bottom: 6px; text-align: center;
+    }
+    .consent-modal-window .consent-subtitle {
+      font-size: .9rem; color: var(--text-light); text-align: center; margin-bottom: 20px;
+    }
+    .consent-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin: 12px 0; font-size: .85rem; color: var(--text-mid);
+    }
+    .consent-item input[type=checkbox] {
+      width: 18px; height: 18px; min-width: 18px; margin-top: 2px;
+      accent-color: var(--pink); cursor: pointer;
+    }
+    .consent-item a { color: var(--pink); text-decoration: underline; }
+    .consent-item label { cursor: pointer; line-height: 1.45; }
+    .consent-pay-btn {
+      display: block; width: 100%; margin-top: 22px; padding: 15px;
+      border-radius: 50px; border: none;
+      font-family: inherit; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: var(--transition);
+      background: var(--pink); color: #fdf3f3;
+      box-shadow: 0 8px 32px rgba(212,118,138,.35);
+    }
+    .consent-pay-btn:hover:not(:disabled) {
+      background: var(--pink-dark); transform: translateY(-2px);
+    }
+    .consent-pay-btn:disabled {
+      background: #ccc !important; box-shadow: none; cursor: not-allowed; transform: none;
+    }
+    .consent-link-btn {
+      display: block; width: 100%; margin-top: 10px; padding: 15px;
+      border-radius: 50px; border: none;
+      font-family: inherit; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all .4s;
+      background: var(--pink); color: #fdf3f3 !important;
+      box-shadow: 0 8px 32px rgba(212,118,138,.35);
+      text-align: center; text-decoration: none;
+      pointer-events: none; opacity: 0.4;
+    }
+    .consent-link-btn.enabled {
+      pointer-events: auto; opacity: 1;
+    }
+    .consent-link-btn:hover {
+      background: var(--pink-dark); transform: translateY(-2px);
+    }
+    .consent-price-note {
+      text-align: center; font-size: .78rem; color: var(--text-light); margin-top: 10px;
+    }
+
+    .success-modal-overlay {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px);
+      z-index: 3000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: all .3s;
+    }
+    .success-modal-overlay.active { opacity:1; visibility:visible; }
+    .success-modal-window {
+      background: var(--warm-white); border-radius: var(--r); max-width: 500px; width: 92%;
+      padding: 40px 32px 36px; text-align: center; box-shadow: var(--shadow-lg); position: relative;
+      transform: scale(0.88); transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .success-modal-overlay.active .success-modal-window { transform: scale(1); }
+    .success-modal-window .close-success {
+      position: absolute; top: 14px; right: 18px;
+      font-size: 26px; cursor: pointer; color: var(--text-light);
+      background: none; border: none; line-height: 1;
+    }
+    .success-modal-window .success-icon { font-size: 3.2rem; margin-bottom: 12px; }
+    .success-modal-window h3 {
+      font-size: 1.9rem; color: var(--pink); margin-bottom: 10px;
+    }
+    .success-modal-window .success-note {
+      font-size: .95rem; color: var(--text-light); margin-bottom: 24px;
+    }
+    .success-btns {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .success-btns a {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 24px; border-radius: 50px;
+      font-size: .98rem; font-weight: 700; text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn-yandex {
+      background: #FFCC00 !important; color: #222 !important;
+      box-shadow: 0 6px 24px rgba(255,204,0,.35);
+    }
+    .btn-yandex:hover { background: #e6b800 !important; transform: translateY(-2px); }
+    .btn-tg {
+      background: #229ED9 !important; color: #fff !important;
+      box-shadow: 0 6px 24px rgba(34,158,217,.35);
+    }
+    .btn-tg:hover { background: #1a8bbf !important; transform: translateY(-2px); }
+    .btn-max {
+      background: #FF6B35 !important; color: #fff !important;
+      box-shadow: 0 6px 24px rgba(255,107,53,.35);
+    }
+    .btn-max:hover { background: #e5572a !important; transform: translateY(-2px); }
+
+    /* Responsive */
+    @media(max-width:1024px) {
+      .hero-grid { grid-template-columns:1fr; gap:48px; }
+      .hero-photo-col { max-width:400px; margin:0 auto; }
+      .hero-badge { left:0; }
+      .inf-cards { grid-template-columns:1fr 1fr; }
+      .how-steps { grid-template-columns:1fr; gap:32px; }
+      .how-steps::before { display:none; }
+      .foot-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:768px) {
+      section { padding:68px 0!important; }
+      nav { display:none; }
+      nav.open {
+        display:block; position:fixed; top:62px; left:0; right:0;
+        background:rgba(250,247,242,0.97); backdrop-filter:blur(20px);
+        padding:16px; border-bottom:1px solid var(--border);
+      }
+      nav.open ul { flex-direction:column; gap:2px; }
+      .mobile-btn { display:block; }
+      .inf-cards { grid-template-columns:1fr; }
+      .hero-actions { flex-direction:column; align-items:flex-start; }
+      .foot-grid { grid-template-columns:1fr; gap:28px; }
+      .foot-bottom { flex-direction:column; text-align:center; }
+    }
+    @media(max-width:480px) {
+      .hero-badge, .hero-tag { display:none; }
+    }
+
+    /* Fix for inline styles used in new blocks */
+    .collections-grid .collection-card {
+      background: var(--warm-white);
+      border-radius: var(--r);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .collections-grid .collection-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .collection-card .card-img-placeholder {
+      background: #ddd; height:200px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; color:var(--text-light);
+    }
+    .collection-card .card-body {
+      padding:24px; flex:1; display:flex; flex-direction:column;
+    }
+    .collection-card .card-body h3 {
+      font-size:1.2rem;
+    }
+    .collection-card .card-body p {
+      font-size:0.9rem; color:var(--text-mid); flex:1;
+    }
+    .collection-card .card-body .price {
+      font-size:1.6rem; font-weight:700; color:var(--pink); margin:12px 0;
+    }
+    .collection-card .card-body .actions {
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .collection-card .card-body .actions .btn {
+      flex:1; justify-content:center;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="container header-inner">
+    <a href="#hero" class="logo">Заготовки <span>для здоровья</span></a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#about-system">О заготовках</a></li>
+        <li><a href="#collections">Сборники</a></li>
+        <li><a href="#how">Как работает</a></li>
+        <li><a href="#food">Рацион</a></li>
+        <li><a href="#club">Клуб</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-btn" id="mbtn">☰</button>
+  </div>
+</header>
+
+<!-- HERO (новый) -->
+<section class="hero" id="hero">
+  <div class="hero-noise"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1 class="display reveal reveal-delay-1">
+          <span class="hero-name-accent">Вера Малыгина</span>
+        </h1>
+        <p class="hero-sub reveal reveal-delay-2">
+          Я помогаю женщинам выстроить сбалансированное питание через систему заготовок.<br>Мой метод — не диеты, а удобство, которое остается с вами на годы.
+        </p>
+        <div class="hero-stats reveal reveal-delay-2">
+          <div class="hero-stat">
+            <div class="num">800<span>К+</span></div>
+            <div class="lbl">готовят по моим рецептам</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">+</div>
+            <div class="lbl">новые сборники</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">-13<span>кг</span></div>
+            <div class="lbl">без диет на системе</div>
+          </div>
+        </div>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#collections" class="btn btn-primary">Посмотреть сборники →</a>
+          <a href="#about-system" class="btn btn-ghost">О заготовках</a>
+        </div>
+        <div class="social-row reveal reveal-delay-4">
+          <span class="soc-label">Я в соцсетях:</span>
+        </div>
+      </div>
+      <div class="hero-photo-col reveal">
+        <div class="hero-photo-frame">
+          <img src="https://i.ibb.co/0RmSwX22/photo-2026-05-27-18-58-36.jpg" alt="Вера Малыгина">
+        </div>
+        <div class="hero-badge">
+          <div class="b-icon">🏆</div>
+          <div class="b-text">
+            <strong>7+ лет</strong>
+            <span>в системе заготовок</span>
+          </div>
+        </div>
+        <div class="hero-tag">≈ 4000 участниц</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height:48px;background:linear-gradient(to bottom,var(--cream),var(--warm-white));"></div>
+
+<!-- В чем суть системы -->
+<section class="about-system" id="about-system" style="background:var(--warm-white); padding:80px 0;">
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:48px;">В чем суть системы заготовок?</h2>
+    <div class="inf-cards" style="margin-bottom:32px;">
+      <div class="inf-card reveal reveal-delay-1">
+        <div class="inf-card-icon">⏰</div>
+        <h3>Экономия времени</h3>
+        <p>На приготовление обычного ужина можно потратить ~1,5 часа, а можно собрать его за 15 минут!</p>
+      </div>
+      <div class="inf-card reveal reveal-delay-2">
+        <div class="inf-card-icon">🍱</div>
+        <h3>Разнообразие и чистота рациона</h3>
+        <p>В питании всегда есть план, в морозилке заготовки, которые можно всячески комбинировать и обрамлять разными гарнирами, соусами, овощами и т.д., получая десятки различных блюд, контролируя состав.</p>
+      </div>
+      <div class="inf-card reveal reveal-delay-3">
+        <div class="inf-card-icon">💸</div>
+        <h3>Экономия средств</h3>
+        <p>Грамотные закупки, использованные продукты и отсутствие необходимости в доставках экономят нам до 40% бюджета в месяц.</p>
+      </div>
+    </div>
+    <div style="max-width:720px; margin:0 auto; text-align:center; padding:20px; background:var(--cream); border-radius:var(--r); border:1px solid var(--border);">
+      <p style="font-style:italic; font-size:1.1rem; color:var(--text-mid);">«Без перемороженной, невкусной, готовой еды, которая занимает всю морозилку.<br>Я люблю свежие блюда из под ножа, но мне жаль ежедневно тратить несколько часов на готовку!»</p>
+    </div>
+  </div>
+</section>
+<div style="height:48px;background:linear-gradient(to bottom,var(--warm-white),var(--cream));"></div>
+
+<!-- СБОРНИКИ -->
+<section class="collections" id="collections" style="background:var(--cream); padding:80px 0;">
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:56px;">Сборники</h2>
+    <div class="collections-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px;">
+
+      <!-- Товар 1 -->
+      <div class="collection-card">
+        <div class="card-img-placeholder">Изображение</div>
+        <div class="card-body">
+          <h3>Ленивый ресторан дома</h3>
+          <p>5 рецептов мясных, белковых заготовок<br>75 блюд «к столу» из заготовок<br>Формат: PDF</p>
+          <div class="price">1 590 ₽</div>
+          <div class="actions">
+            <a href="#" class="btn btn-primary">Купить</a>
+            <a href="#" class="btn btn-ghost">Подробнее</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Товар 2 -->
+      <div class="collection-card">
+        <div class="card-img-placeholder">Изображение</div>
+        <div class="card-body">
+          <h3>Летний сборник «Легкая морозилка»</h3>
+          <p>27 ходовых заготовок из овощей, фруктов/ягод и зелени<br>Видео-инструкция + 3 видео-рецепта + 9 рецептов в конспекте<br>Формат: видео + PDF</p>
+          <div class="price">1 590 ₽</div>
+          <div class="actions">
+            <a href="#" class="btn btn-primary">Купить</a>
+            <a href="#" class="btn btn-ghost">Подробнее</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Товар 3 (с модалкой) -->
+      <div class="collection-card">
+        <div class="card-img-placeholder">Изображение</div>
+        <div class="card-body">
+          <h3>«Бульоны концентраты»</h3>
+          <p>2 рецепта концентрированных бульонов<br>16 рецептов супов-конструкторов<br>Формат: PDF</p>
+          <div class="price">1 590 ₽</div>
+          <div class="actions">
+            <a href="#" class="btn btn-primary">Купить</a>
+            <button class="btn btn-ghost" id="openBulionModal">Подробнее</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<div style="height:48px;background:linear-gradient(to bottom,var(--cream),var(--warm-white));"></div>
+
+<!-- КАК РАБОТАЕТ -->
+<section class="how" id="how">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;" class="reveal">
+      <h2>Как работают заготовки?</h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <h3>1 раз в неделю</h3>
+        <p>Выделяете 2–4 часа в выходной день и делаете заготовки по материалам клуба.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <h3>5–10 минут в будни</h3>
+        <p>Собираете блюдо из заготовок за 5–10 минут активного времени — духовка или сковорода доделают всё остальное.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <h3>Свободные вечера</h3>
+        <p>Кухня больше не поглощает ваше время. Снят вопрос «что приготовить» — вы отдыхаете, пока ужин готовится сам.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height:48px;background:linear-gradient(to bottom,var(--cream),var(--warm-white));"></div>
+
+<!-- ЕДА: ЗАГОТОВКИ → БЛЮДА (карусель) -->
+<section class="food" id="food">
+  <div class="container">
+    <div class="combo-section">
+      <h2 style="text-align: center; margin-bottom: 24px;">Заготовки</h2>
+      <p style="text-align: center; margin-bottom: 32px;">Один раз в неделю готовите заготовки — и всю неделю собираете вкусные блюда за 5–10 минут</p>
+
+      <div class="ingredients-slider-wrapper">
+        <div class="ingredients-grid" id="ingredientsGrid">
+          <div class="ingredient-card">
+            <img src="https://i.ibb.co/r2FRkVBv/photo-2026-04-02-20-37-13.jpg" alt="Заготовка 1">
+          </div>
+          <div class="ingredient-card">
+            <img src="https://i.ibb.co/FqY4fFc9/photo-2026-04-02-20-37-12.jpg" alt="Заготовка 2">
+          </div>
+          <div class="ingredient-card">
+            <img src="https://i.ibb.co/sp4rqhw5/photo-2026-04-02-20-40-09.jpg" alt="Заготовка 3">
+          </div>
+        </div>
+        <div class="slider-controls-mobile ingredients-controls">
+          <button class="slider-btn-mobile prev-ing" aria-label="Назад">←</button>
+          <button class="slider-btn-mobile next-ing" aria-label="Вперёд">→</button>
+        </div>
+      </div>
+
+      <h2 style="text-align: center; margin: 24px 0 60px;">Блюда из заготовок</h2>
+
+      <div class="dishes-slider-wrapper">
+        <div class="dishes-grid" id="dishesGrid">
+          <div class="dish-card">
+            <img src="https://i.ibb.co/Zpy4kGGv/photo-2026-04-02-20-40-09-3.jpg" alt="Блюдо 1">
+          </div>
+          <div class="dish-card">
+            <img src="https://i.ibb.co/353wm494/photo-2026-04-02-20-40-08.jpg" alt="Блюдо 2">
+          </div>
+          <div class="dish-card">
+            <img src="https://i.ibb.co/fYQNHPYj/photo-2026-04-02-20-40-09-2.jpg" alt="Блюдо 3">
+          </div>
+        </div>
+        <div class="slider-controls-mobile dishes-controls">
+          <button class="slider-btn-mobile prev-dish" aria-label="Назад">←</button>
+          <button class="slider-btn-mobile next-dish" aria-label="Вперёд">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height:48px;background:linear-gradient(to bottom,var(--warm-white),var(--cream));"></div>
+
+<!-- КЛУБ -->
+<section id="club" style="background:var(--warm-white); padding:80px 0; text-align:center;">
+  <div class="container">
+    <h2 style="margin-bottom:1rem;">Клуб «Фабрика заготовок»</h2>
+    <p style="max-width:600px; margin:0 auto 1.8rem; font-size:1.1rem;">Вся система, 200+ рецептов, чат единомышленников, все правила, лайфхаки и советы — в одном месте!</p>
+    <a href="#" class="btn btn-primary">Записаться в лист ожидания →</a>
+  </div>
+</section>
+<div style="height:48px;background:linear-gradient(to bottom,var(--warm-white),var(--cream));"></div>
+
+<!-- ЗАДАТЬ ВОПРОС -->
+<section id="ask" style="background:var(--cream); padding:60px 0; text-align:center;">
+  <div class="container">
+    <h3 style="margin-bottom:1.2rem;">Задать вопрос</h3>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://t.me/zabota_veramlgn" target="_blank" class="btn btn-primary">Telegram</a>
+      <a href="https://vk.ru/id1104540344" target="_blank" class="btn btn-ghost">ВКонтакте</a>
+    </div>
+  </div>
+</section>
+<div style="height:48px;background:linear-gradient(to bottom,var(--cream),var(--warm-white));"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo">Заготовки <span style="color:var(--pink)">для здоровья</span></a>
+        <p>Система заготовок и планирования от Веры Малыгиной. Меньше времени на кухне — больше времени для себя.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Информация</h4>
+        <ul>
+          <li>ИП Малыгина Вера Николаевна</li>
+          <li><a href="https://disk.yandex.ru/i/sDY8_G_OsyiZ8g" target="_blank">Реквизиты</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Документы</h4>
+        <ul>
+          <li><a href="https://disk.yandex.ru/i/TpVA_h_RWP1UyQ" target="_blank">Согласие на рассылку</a></li>
+          <li><a href="https://disk.yandex.ru/i/3RzYTim7hZO0Nw" target="_blank">Согласие на обработку ПД</a></li>
+          <li><a href="https://disk.yandex.ru/i/vIxEZ0HkXsj42Q" target="_blank">Политика обработки ПД</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="https://t.me/+ces7gQS4YXA0NmUy" target="_blank">Telegram</a></li>
+          <li><a href="https://vk.ru/im/channels/-234363549" target="_blank">ВКонтакте</a></li>
+          <li><a href="https://max.ru/vera_mlgn_fabrika" target="_blank">MAX</a></li>
+          <li><a href="https://dzen.ru/zagotovki_veramlgn?share_to=link" target="_blank">Яндекс Дзен</a></li>
+          <li>Служба заботы: zabotaveramlgn@yandex.ru</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2025 Заготовки для здоровья. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== МОДАЛКА СОГЛАСИЙ ===== -->
+<div class="consent-modal-overlay" id="consentModal">
+  <div class="consent-modal-window">
+    <button class="close-consent" id="closeConsent" aria-label="Закрыть">&times;</button>
+    <h3>Условия покупки</h3>
+    <p class="consent-subtitle">Пожалуйста, ознакомьтесь и подтвердите согласие</p>
+
+    <div class="form-field" style="text-align:left; margin-bottom:16px;">
+      <label for="emailInput" style="font-weight:600; display:block; margin-bottom:4px;">Ваш email</label>
+      <input type="email" id="emailInput" required placeholder="example@mail.ru" style="width:100%; padding:12px; border-radius:12px; border:1px solid var(--border); font-family:inherit;">
+    </div>
+
+    <div class="consent-item">
+      <input type="checkbox" id="cb-pd">
+      <label for="cb-pd">Даю <a href="https://disk.yandex.ru/i/3RzYTim7hZO0Nw" target="_blank">согласие</a> на обработку персональных данных в соответствии с <a href="https://disk.yandex.ru/i/vIxEZ0HkXsj42Q" target="_blank">политикой обработки ПД</a></label>
+    </div>
+    <div class="consent-item">
+      <input type="checkbox" id="cb-mail">
+      <label for="cb-mail">Даю согласие на получение рассылки (<a href="https://disk.yandex.ru/i/TpVA_h_RWP1UyQ" target="_blank">согласие на рассылку</a>)</label>
+    </div>
+
+    <button class="consent-pay-btn" id="consentPayBtn" disabled>Оплатить — 1 590 ₽</button>
+    <p style="font-size:0.75rem;color:var(--text-mid);text-align:center;margin:8px 0 0;">Доступ появится после оплаты, не закрывайте страницу</p>
+
+    <a href="https://t.me/ваш_бот" target="_blank" class="consent-link-btn" id="consentTgBtn">✈️ Оплатить в Telegram</a>
+    <a href="https://max.ru/ваша_ссылка" target="_blank" class="consent-link-btn" id="consentMaxBtn">🔴 Оплатить в MAX</a>
+    <p class="consent-price-note">Нажимая на кнопку «Оплатить», вы соглашаетесь с условиями <a href="https://disk.yandex.ru/d/ваша_оферта" target="_blank">оферты</a></p>
+  </div>
+</div>
+
+<!-- ===== МОДАЛКА УСПЕШНОЙ ПОКУПКИ ===== -->
+<div class="success-modal-overlay" id="successModal">
+  <div class="success-modal-window">
+    <button class="close-success" id="closeSuccess" aria-label="Закрыть">&times;</button>
+    <div class="success-icon">🎉</div>
+    <h3>Поздравляю с приобретением сборника!</h3>
+    <p class="success-note">Он уже ждёт вас — выберите удобный способ получения доступа:</p>
+    <div class="success-btns">
+      <a href="https://disk.yandex.ru/d/ваша_ссылка" target="_blank" class="btn-yandex">📁 Забрать сборник (Яндекс Диск)</a>
+      <a href="https://t.me/ваш_канал" target="_blank" class="btn-tg">✈️ Забрать в Telegram</a>
+      <a href="https://max.ru/ваш_канал" target="_blank" class="btn-max">🔴 Забрать в MAX</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== СКРИПТЫ ===== -->
+<script>
+  // Мобильное меню
+  const mbtn = document.getElementById('mbtn');
+  const nav = document.getElementById('nav');
+  mbtn.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    mbtn.textContent = nav.classList.contains('open') ? '✕' : '☰';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    mbtn.textContent = '☰';
+  }));
+
+  // Reveal on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Header scroll shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('hdr').style.boxShadow = window.scrollY > 50 ? '0 4px 32px rgba(44,36,32,0.1)' : 'none';
+  }, { passive: true });
+
+  // Карусель для заготовок (мобильная)
+  (function() {
+    function initSlider(gridId, prevBtnClass, nextBtnClass) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      const prev = document.querySelector(prevBtnClass);
+      const next = document.querySelector(nextBtnClass);
+      if (!prev || !next) return;
+      const slide = () => {
+        const card = grid.querySelector('.ingredient-card, .dish-card');
+        if (!card) return 300;
+        const gap = 16;
+        return card.offsetWidth + gap;
+      };
+      prev.addEventListener('click', () => {
+        grid.scrollBy({ left: -slide(), behavior: 'smooth' });
+      });
+      next.addEventListener('click', () => {
+        grid.scrollBy({ left: slide(), behavior: 'smooth' });
+      });
+    }
+    if (window.innerWidth < 768) {
+      initSlider('ingredientsGrid', '.prev-ing', '.next-ing');
+      initSlider('dishesGrid', '.prev-dish', '.next-dish');
+    }
+  })();
+
+  // ===== МОДАЛКА СОГЛАСИЙ =====
+  const consentModal  = document.getElementById("consentModal");
+  const consentPayBtn = document.getElementById("consentPayBtn");
+  const cbPd          = document.getElementById("cb-pd");
+  const cbMail        = document.getElementById("cb-mail");
+  const consentTgBtn  = document.getElementById("consentTgBtn");
+  const consentMaxBtn = document.getElementById("consentMaxBtn");
+  const emailInput    = document.getElementById("emailInput");
+
+  function openConsentModal() {
+    consentModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+  function closeConsentModal() {
+    consentModal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  function updatePayBtn() {
+    const email = emailInput.value.trim();
+    const ok = cbPd.checked && cbMail.checked && email.length > 0;
+    consentPayBtn.disabled = !ok;
+    [consentTgBtn, consentMaxBtn].forEach(btn => {
+      btn.classList.toggle("enabled", ok);
+    });
+  }
+  [cbPd, cbMail, emailInput].forEach(el => el.addEventListener("change", updatePayBtn));
+  emailInput.addEventListener("input", updatePayBtn);
+
+  // Открыть попап по клику на кнопку "Купить" (привязка к классам, но пока просто пример)
+  document.querySelectorAll(".collection-card .btn-primary").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      openConsentModal();
+    });
+  });
+
+  document.getElementById("closeConsent").addEventListener("click", closeConsentModal);
+  consentModal.addEventListener("click", e => { if (e.target === consentModal) closeConsentModal(); });
+
+  // ===== МОДАЛКА УСПЕШНОЙ ПОКУПКИ =====
+  const successModal = document.getElementById("successModal");
+  function openSuccessModal() {
+    successModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+  function closeSuccessModal() {
+    successModal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+  document.getElementById("closeSuccess").addEventListener("click", closeSuccessModal);
+  successModal.addEventListener("click", e => { if (e.target === successModal) closeSuccessModal(); });
+
+  // ===== ОТКРЫТИЕ МОДАЛКИ ДЛЯ БУЛЬОНОВ (Подробнее) =====
+  document.getElementById("openBulionModal").addEventListener("click", function() {
+    alert('Здесь будет подробное описание сборника "Бульоны концентраты" с текстом из ТЗ.');
+  });
+
+  // Для интеграции с Продамусом – обработка postMessage (пример)
+  window.addEventListener("message", function(event) {
+    if (event.data && event.data.status === "success") {
+      openSuccessModal();
+    }
+  });
+</script>
+
+</body>
+</html>
