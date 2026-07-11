@@ -16,7 +16,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -40,7 +40,7 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
-      font-family: 'Century Gothic','CenturyGothic','AppleGothic','Trebuchet MS',sans-serif;
+      font-family:'Inter',sans-serif;
       background: var(--cream);
       color: var(--text);
       overflow-x: hidden;
@@ -50,13 +50,13 @@
 
     /* ── Typography ── */
     .display {
-      font-family: 'Century Gothic','CenturyGothic','AppleGothic',sans-serif;
+      font-family:'Inter',sans-serif;
       font-size: clamp(2.4rem,5vw,5.5rem);
       font-weight: 600; line-height: 1.1; letter-spacing:-0.02em;
     }
     .display em { font-style:italic; color:var(--pink); }
     h2 {
-      font-family: 'Century Gothic','CenturyGothic','AppleGothic',sans-serif;
+      font-family:'Inter',sans-serif;
       font-size: clamp(1.7rem,3.2vw,3rem);
       font-weight:600; line-height:1.2; letter-spacing:-0.01em;
     }
@@ -68,7 +68,7 @@
     .btn {
       display:inline-flex; align-items:center; gap:10px;
       padding:14px 32px; border-radius:50px;
-      font-family:'Century Gothic','CenturyGothic','AppleGothic','Trebuchet MS',sans-serif;
+      font-family:'Inter',sans-serif;
       font-size:0.95rem; font-weight:700;
       text-decoration:none; border:none; cursor:pointer;
       transition:var(--transition); letter-spacing:0.01em;
@@ -164,7 +164,7 @@
     }
     .hero-stats { display:flex; gap:28px; margin-bottom:2.4rem; flex-wrap:wrap; }
     .hero-stat .num {
-      font-family:'Century Gothic','CenturyGothic','AppleGothic',sans-serif;
+      font-family:'Inter',sans-serif;
       font-size:2.2rem; font-weight:700; color:var(--text);
       line-height:1; margin-bottom:4px; letter-spacing:-0.02em;
     }
@@ -328,7 +328,7 @@
     .card-body p { font-size:0.88rem; color:var(--text-mid); flex:1; margin-bottom:0; }
     .card-body .price {
       font-size:1.6rem; font-weight:700; color:var(--pink);
-      margin:14px 0 12px; font-family:'Century Gothic','CenturyGothic','AppleGothic',sans-serif;
+      margin:14px 0 12px; font-family:'Inter',sans-serif;
     }
     .card-body .actions { display:flex; gap:8px; flex-wrap:wrap; }
     .card-body .actions .btn { flex:1; justify-content:center; min-width:0; }
@@ -400,6 +400,14 @@
     .close-consent:hover { color:var(--text); transform:rotate(90deg); }
     .consent-modal-window h3 { font-size:1.5rem; color:var(--pink); margin-bottom:4px; text-align:center; }
     .consent-subtitle { font-size:.88rem; color:var(--text-light); text-align:center; margin-bottom:18px; }
+    .promo-row { display:flex; gap:8px; margin:14px 0 4px; }
+    .promo-row input { flex:1; min-width:0; padding:12px; border-radius:12px; border:1px solid var(--border); font-family:inherit; font-size:0.9rem; text-transform:uppercase; }
+    .promo-row input:focus { outline:none; border-color:var(--pink); }
+    .promo-row button { padding:0 18px; border-radius:12px; border:none; background:var(--pink); color:#FDF3F3; font-family:inherit; font-weight:700; font-size:0.85rem; cursor:pointer; white-space:nowrap; transition:var(--transition); }
+    .promo-row button:hover { background:var(--pink-dark); }
+    .promo-msg { font-size:0.78rem; margin:2px 0 14px; min-height:14px; }
+    .promo-msg.success { color:#3f8f5f; }
+    .promo-msg.error { color:#c0392b; }
     .form-field { text-align:left; margin-bottom:14px; }
     .form-field label { font-weight:600; display:block; margin-bottom:4px; font-size:0.88rem; }
     .form-field input {
@@ -580,7 +588,8 @@
     @media (max-width:480px) {
       .hero-badge, .hero-tag { display:none; }
       .hero-grid { grid-template-columns:1fr!important; }
-      .hero-photo-col { display:none; }
+      .hero-photo-col { display:flex; justify-content:center; margin:4px 0 8px; }
+      .hero-cutout-wrap { height:clamp(170px,46vw,240px); }
       .hero-content { text-align:center; }
       .hero-stat .num { font-size:1.4rem; }
       .hero-stats { gap:20px; }
@@ -614,8 +623,8 @@
     .soc-btn { width:32px!important; height:32px!important; font-size:0.95rem!important; }
 
     /* ── Book covers ── */
-    .card-cover { height:280px; overflow:hidden; position:relative; background:#fff; }
-    .card-cover img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; background:#fff; }
+    .card-cover { height:280px; overflow:hidden; position:relative; background:transparent; border:3px solid var(--pink); box-sizing:border-box; }
+    .card-cover img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; background:transparent; }
     @media(max-width:768px){ .card-cover { height:240px; } }
 
     /* ── Book checkbox on card ── */
@@ -664,6 +673,7 @@
     /* ── Modal book selection ── */
     .modal-books-section { margin-bottom:14px; }
     .modal-books-lbl { font-weight:700; font-size:0.88rem; margin-bottom:8px; color:var(--text); display:block; }
+    .modal-discount-note { font-weight:600; font-size:0.78rem; color:var(--pink-dark); margin:-2px 0 12px; }
     .modal-book-row {
       display:flex; align-items:center; gap:10px;
       padding:9px 12px; border-radius:var(--r-sm);
@@ -1020,6 +1030,7 @@
     <!-- Выбор сборников в попапе -->
     <div class="modal-books-section" id="modalBooksSection">
       <span class="modal-books-lbl">Выберите сборники:</span>
+      <p class="modal-discount-note">Скидка до 20% при покупке всех сборников</p>
       <label class="modal-book-row" id="mrow-book1">
         <input type="checkbox" class="modal-book-cb" id="mcb-book1" data-modal-book="book1">
         <span class="modal-book-name">Ленивый ресторан дома</span>
@@ -1044,6 +1055,12 @@
         <span class="modal-total-save" id="modalTotalSave" style="display:none;"></span>
       </div>
     </div>
+    <div class="promo-row" id="promoRow">
+      <input type="text" id="promoInput" placeholder="Промокод" autocomplete="off">
+      <button type="button" id="promoApplyBtn">Применить</button>
+    </div>
+    <p class="promo-msg" id="promoMsg"></p>
+
     <div class="form-field" id="emailField">
       <label for="emailInput">Ваш email</label>
       <input type="email" id="emailInput" required placeholder="example@mail.ru">
@@ -1077,7 +1094,7 @@
     <button class="close-success" id="closeSuccess" aria-label="Закрыть">&times;</button>
     <div class="success-icon">🎉</div>
     <h3 id="successModalTitle">Поздравляю с покупкой!</h3>
-    <p class="success-note" id="successNote">Доступы к материалам направлены на вашу электронную почту 📩</p>
+    <p class="success-note" id="successNote">Доступ к материалам уже готов — все ссылки в открывшемся окне оплаты 🎉</p>
   </div>
 </div>
 
@@ -1199,6 +1216,32 @@
     book3:'Бульоны концентраты'
   };
   var selectedBooks = new Set();
+  var PROMO_CODE = 'SSBORNIK11';
+  var PROMO_DISCOUNT = 200;
+  var promoApplied = false;
+  var promoInput    = document.getElementById('promoInput');
+  var promoApplyBtn = document.getElementById('promoApplyBtn');
+  var promoMsg      = document.getElementById('promoMsg');
+
+  function applyPromo() {
+    var code = (promoInput.value || '').trim().toUpperCase();
+    if (!code) { return; }
+    if (code === PROMO_CODE) {
+      promoApplied = true;
+      promoMsg.textContent = 'Промокод применён — скидка 200 ₽';
+      promoMsg.className = 'promo-msg success';
+      promoInput.disabled = true;
+      promoApplyBtn.disabled = true;
+    } else {
+      promoApplied = false;
+      promoMsg.textContent = 'Такой промокод не найден';
+      promoMsg.className = 'promo-msg error';
+    }
+    updateModalTotal();
+    updateCartBar();
+  }
+  if (promoApplyBtn) promoApplyBtn.addEventListener('click', applyPromo);
+  if (promoInput) promoInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); applyPromo(); } });
 
   function fmt(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
   function plural(n) { return n===1?'сборник':n<=4?'сборника':'сборников'; }
@@ -1206,6 +1249,7 @@
   function cartInfo(n) {
     n = n||selectedBooks.size;
     var t=PRICES[n]||1590, o=ORIG[n]||1590;
+    if (promoApplied && n > 0) { t = Math.max(0, t - PROMO_DISCOUNT); }
     return {total:t, orig:o, saving:o-t};
   }
 
@@ -1405,7 +1449,9 @@
     var paidContent = 'Спасибо за покупку!\n\n' +
       'Вы приобрели:\n' + bookList + '\n\n' +
       'Ссылки для доступа к материалам:\n\n' + accessParts + '\n\n' +
-      'Если возникнут вопросы — пишите: zabotaveramlgn@yandex.ru';
+      'Служба заботы\n' +
+      'ВК — https://vk.ru/id1104540344\n' +
+      'Тг — https://t.me/zabota_veramlgn';
 
     // Передаём каждый сборник отдельным товаром — тогда в письме будет
     // правильное название, а не дефолтное «Услуги по предоставлению доступа к клубу».
