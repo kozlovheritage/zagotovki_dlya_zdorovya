@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Сборники рецептов заготовок | Вера Малыгина</title>
   <meta name="description" content="Сборники рецептов заготовок от Веры Малыгиной. Удобство, экономия времени и разнообразие в питании.">
+  <!-- Prodamus payment widget -->
+  <script>
+    window.prodamusDomain = 'vera-mlgn.payform.ru';
+    window.prodamusCurrency = 'rub';
+  </script>
+  <script src="https://widget.prodamus.ru/src/init.js" async></script>
+  <link rel="stylesheet" href="https://widget.prodamus.ru/src/init.css" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -31,7 +40,7 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
-      font-family: 'Century Gothic','CenturyGothic','AppleGothic',Trebuchet MS,sans-serif;
+      font-family: 'Century Gothic','CenturyGothic','AppleGothic','Trebuchet MS',sans-serif;
       background: var(--cream);
       color: var(--text);
       overflow-x: hidden;
@@ -59,7 +68,7 @@
     .btn {
       display:inline-flex; align-items:center; gap:10px;
       padding:14px 32px; border-radius:50px;
-      font-family:'Century Gothic','CenturyGothic','AppleGothic',Trebuchet MS,sans-serif;
+      font-family:'Century Gothic','CenturyGothic','AppleGothic','Trebuchet MS',sans-serif;
       font-size:0.95rem; font-weight:700;
       text-decoration:none; border:none; cursor:pointer;
       transition:var(--transition); letter-spacing:0.01em;
@@ -133,7 +142,7 @@
 
     .hero {
       padding-top:96px; padding-bottom:0;
-      background:var(--cream);
+      background:linear-gradient(150deg,#FEF6F0 0%,#FDEAEF 45%,#FEF3E2 100%);
       position:relative; overflow:hidden;
       min-height:100vh;
       display:flex; align-items:center;
@@ -397,7 +406,7 @@
       width:100%; padding:11px 14px;
       border-radius:var(--r-sm); border:1.5px solid var(--border);
       font-family:inherit; font-size:0.95rem; transition:var(--transition);
-      background:var(--white);
+      background:#fff;
     }
     .form-field input:focus { outline:none; border-color:var(--pink); box-shadow:0 0 0 3px rgba(212,118,138,0.12); }
     .form-field.invalid input { border-color:var(--pink-dark); }
@@ -436,6 +445,16 @@
     .consent-link-btn.enabled { pointer-events:auto; opacity:1; }
     .consent-link-btn:hover { background:var(--pink-dark); transform:translateY(-2px); }
     .consent-price-note { text-align:center; font-size:.75rem; color:var(--text-light); margin-top:9px; }
+    /* ── TG/MAX блок: только для Ленивого ресторана ── */
+    #tgMaxBlock { display:none; }
+    #tgMaxBlock.visible { display:block; }
+    .tg-max-divider {
+      display:flex; align-items:center; gap:8px; margin:12px 0 8px;
+      font-size:0.72rem; color:var(--text-light); font-weight:600; text-transform:uppercase; letter-spacing:0.06em;
+    }
+    .tg-max-divider::before, .tg-max-divider::after {
+      content:''; flex:1; height:1px; background:var(--border);
+    }
 
     /* ── Success modal ── */
     .success-modal-overlay {
@@ -460,18 +479,6 @@
     .success-modal-window .success-icon { font-size:3rem; margin-bottom:10px; }
     .success-modal-window h3 { font-size:1.7rem; color:var(--pink); margin-bottom:8px; }
     .success-note { font-size:.92rem; color:var(--text-light); margin-bottom:20px; }
-    .success-btns { display:flex; flex-direction:column; gap:10px; }
-    .success-btns a {
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:13px 20px; border-radius:50px;
-      font-size:.95rem; font-weight:700; text-decoration:none; transition:var(--transition);
-    }
-    .btn-yandex { background:#FFCC00!important; color:#222!important; box-shadow:0 6px 24px rgba(255,204,0,.3); }
-    .btn-yandex:hover { background:#e6b800!important; transform:translateY(-2px); }
-    .btn-tg { background:#229ED9!important; color:#fff!important; box-shadow:0 6px 24px rgba(34,158,217,.3); }
-    .btn-tg:hover { background:#1a8bbf!important; transform:translateY(-2px); }
-    .btn-max { background:#FF6B35!important; color:#fff!important; box-shadow:0 6px 24px rgba(255,107,53,.3); }
-    .btn-max:hover { background:#e5572a!important; transform:translateY(-2px); }
 
     /* ══════════════════════════════════
        RESPONSIVE
@@ -572,11 +579,12 @@
     /* Very small screens */
     @media (max-width:480px) {
       .hero-badge, .hero-tag { display:none; }
-      .hero-stat .num { font-size:1.2rem; }
-      .hero-photo-col { max-width:none; }
-      .hero-cutout-wrap { height:clamp(180px,45vw,260px); }
-      .hc-shape-1 { width:200px; height:200px; }
-      .hc-shape-2 { width:150px; height:150px; }
+      .hero-grid { grid-template-columns:1fr!important; }
+      .hero-photo-col { display:none; }
+      .hero-content { text-align:center; }
+      .hero-stat .num { font-size:1.4rem; }
+      .hero-stats { gap:20px; }
+      .hero-stat .lbl { max-width:80px; }
       .ingredient-card img, .dish-card img { width:200px; height:200px; }
       .ingredient-card, .dish-card { width:200px; }
       .consent-modal-window, .success-modal-window { padding:24px 16px; }
@@ -597,10 +605,7 @@
       }
     }
   
-    /* ── Hero: gradient bg + accent ── */
-    .hero {
-      background: linear-gradient(150deg,#FEF6F0 0%,#FDEAEF 45%,#FEF3E2 100%);
-    }
+    /* ── Hero: accent ── */
     .hero-name-accent {
       display:block;
       color:var(--pink);
@@ -653,18 +658,7 @@
     }
     .cart-cta:hover { background:var(--pink-dark); }
 
-    /* ── Consent order summary ── */
-    .consent-order-summary {
-      background:var(--cream); border-radius:var(--r-sm);
-      padding:14px 16px; margin-bottom:18px;
-      border:1px solid var(--border);
-    }
-    .consent-order-title { font-weight:700; font-size:0.88rem; margin-bottom:8px; color:var(--text); }
-    .consent-order-item { font-size:0.84rem; color:var(--text-mid); padding:3px 0; }
-    .consent-order-price { margin-top:10px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-    .consent-order-old { font-size:0.82rem; color:var(--text-light); text-decoration:line-through; }
-    .consent-order-total { font-size:1.2rem; font-weight:700; color:var(--pink); }
-    .consent-order-save { font-size:0.75rem; background:var(--pink-light); color:var(--pink-dark); padding:2px 8px; border-radius:20px; font-weight:600; }
+
 
     
     /* ── Modal book selection ── */
@@ -827,7 +821,7 @@
           <div class="price">1 590 ₽</div>
           <div class="actions">
             <a href="#" class="btn btn-primary buy-btn">Купить</a>
-            <a href="#" target="_blank" rel="noreferrer" class="btn btn-ghost">Подробнее</a>
+            <a href="https://leniviyrestoran.onreza.app/" target="_blank" rel="noreferrer" class="btn btn-ghost">Подробнее</a>
           </div>
         </div>
       </div>
@@ -844,7 +838,7 @@
           <div class="price">1 590 ₽</div>
           <div class="actions">
             <a href="#" class="btn btn-primary buy-btn">Купить</a>
-            <a href="#" target="_blank" rel="noreferrer" class="btn btn-ghost">Подробнее</a>
+            <a href="https://kozlovheritage.github.io/legkaya-morozilka/" target="_blank" rel="noreferrer" class="btn btn-ghost">Подробнее</a>
           </div>
         </div>
       </div>
@@ -944,7 +938,7 @@
     <div class="club-section reveal">
       <h2>Клуб «Фабрика заготовок»</h2>
       <p>Вся система, 200+ рецептов, чат единомышленников, все правила, лайфхаки и советы — в одном месте!</p>
-      <a href="#" class="btn btn-primary">Записаться в лист ожидания →</a>
+      <a href="https://fabrikazagotovok.ru/" target="_blank" rel="noreferrer" class="btn btn-primary">Записаться в лист ожидания →</a>
     </div>
   </div>
 </section>
@@ -1018,9 +1012,9 @@
 
 <!-- МОДАЛКА СОГЛАСИЙ -->
 <div class="consent-modal-overlay" id="consentModal">
-  <div class="consent-modal-window">
+  <div class="consent-modal-window" role="dialog" aria-modal="true" aria-labelledby="consentModalTitle">
     <button class="close-consent" id="closeConsent" aria-label="Закрыть">&times;</button>
-    <h3>Условия покупки</h3>
+    <h3 id="consentModalTitle">Условия покупки</h3>
     <p class="consent-subtitle">Пожалуйста, ознакомьтесь и подтвердите согласие</p>
 
     <!-- Выбор сборников в попапе -->
@@ -1068,32 +1062,30 @@
     <button class="consent-pay-btn" id="consentPayBtn" disabled>Оплатить — 1 590 ₽</button>
     <p style="font-size:0.72rem;color:var(--text-mid);text-align:center;margin:7px 0 0;">Доступ появится после оплаты, не закрывайте страницу</p>
 
-    <a href="https://t.me/+gnLLVWYmsWMzNTIy" target="_blank" rel="noreferrer" class="consent-link-btn" id="consentTgBtn">✈️ Оплатить в Telegram</a>
-    <a href="https://max.ru/join/wJeBY-nx4F-aqB0vkzRg-jdmZnOKQs6jlqHM528Drkg" target="_blank" rel="noreferrer" class="consent-link-btn" id="consentMaxBtn">🔴 Оплатить в MAX</a>
+    <div id="tgMaxBlock">
+      <div class="tg-max-divider">или</div>
+      <a href="https://t.me/+gnLLVWYmsWMzNTIy" target="_blank" rel="noreferrer" class="consent-link-btn" id="consentTgBtn">✈️ Оплатить в Telegram</a>
+      <a href="https://max.ru/join/wJeBY-nx4F-aqB0vkzRg-jdmZnOKQs6jlqHM528Drkg" target="_blank" rel="noreferrer" class="consent-link-btn" id="consentMaxBtn">🔴 Оплатить в MAX</a>
+    </div>
     <p class="consent-price-note">Нажимая «Оплатить», вы соглашаетесь с <a href="https://disk.yandex.ru/d/_R5Vp-Q3C_Inhw" target="_blank">офертой</a></p>
   </div>
 </div>
 
 <!-- МОДАЛКА УСПЕШНОЙ ПОКУПКИ -->
 <div class="success-modal-overlay" id="successModal">
-  <div class="success-modal-window">
+  <div class="success-modal-window" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
     <button class="close-success" id="closeSuccess" aria-label="Закрыть">&times;</button>
     <div class="success-icon">🎉</div>
-    <h3>Поздравляю с покупкой!</h3>
-    <p class="success-note">Сборник уже ждёт вас — выберите удобный способ получения доступа:</p>
-    <div class="success-btns">
-      <a href="https://disk.yandex.ru/d/2rf28tMSgz39ww" target="_blank" rel="noreferrer" class="btn-yandex">📁 Забрать сборник (Яндекс Диск)</a>
-      <a href="https://t.me/+ces7gQS4YXA0NmUy" target="_blank" rel="noreferrer" class="btn-tg">✈️ Забрать в Telegram</a>
-      <a href="https://max.ru/vera_mlgn_fabrika" target="_blank" rel="noreferrer" class="btn-max">🔴 Забрать в MAX</a>
-    </div>
+    <h3 id="successModalTitle">Поздравляю с покупкой!</h3>
+    <p class="success-note" id="successNote">Доступы к материалам направлены на вашу электронную почту 📩</p>
   </div>
 </div>
 
 <!-- МОДАЛКА БУЛЬОНОВ -->
 <div class="consent-modal-overlay" id="bulionModal" style="z-index:2600;">
-  <div class="consent-modal-window" style="max-width:540px;">
+  <div class="consent-modal-window" style="max-width:540px;" role="dialog" aria-modal="true" aria-labelledby="bulionModalTitle">
     <button class="close-consent" id="closeBulion" aria-label="Закрыть">&times;</button>
-    <h3 style="font-size:1.3rem; margin-bottom:8px;">«Бульоны концентраты»</h3>
+    <h3 id="bulionModalTitle" style="font-size:1.3rem; margin-bottom:8px;">«Бульоны концентраты»</h3>
     <p style="font-size:0.95rem; color:var(--text-mid); margin-bottom:20px; text-align:left;">
       <strong>Самая лучшая заготовка — концентрат бульона</strong><br><br>
       Это наш коллаген, строительные и полезные материалы для организма, помощник для ЖКТ и иммунитета, а также основа для сотен разных блюд 🍱<br><br>
@@ -1108,7 +1100,7 @@
     </ul>
     <p style="font-size:0.85rem; color:var(--text-light); text-align:center; margin-bottom:16px;">В сборнике есть ответы на все вопросы о концентратах, советы и лайфхаки 🔥</p>
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <a href="#" class="btn btn-primary buy-btn" style="flex:1; justify-content:center;" onclick="var b=document.querySelector('.book-select-cb[data-book=book3]'); if(b&&!b.checked){b.checked=true;b.dispatchEvent(new Event('change'));} document.getElementById('bulionModal').classList.remove('active'); document.body.style.overflow=''; setTimeout(function(){var cb=document.querySelectorAll('.book-select-cb');cb.forEach(function(c){if(c.dataset.book!=='book3'){c.checked=false;c.dispatchEvent(new Event('change'));}});},0);">Купить — 1 590 ₽</a>
+      <a href="#" class="btn btn-primary" id="bulionBuyBtn" style="flex:1; justify-content:center;">Купить — 1 590 ₽</a>
     </div>
   </div>
 </div>
@@ -1178,8 +1170,25 @@
   var emailInput    = document.getElementById('emailInput');
   var emailField    = document.getElementById('emailField');
 
-  function openModal(m)  { m.classList.add('active');    document.body.style.overflow = 'hidden'; }
-  function closeModal(m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+  function openModal(m) {
+    m.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // переносим фокус внутрь модалки
+    setTimeout(function() {
+      var first = m.querySelector('button:not([disabled]),input:not([disabled]),[href],[tabindex]:not([tabindex="-1"])');
+      if (first) first.focus();
+    }, 50);
+  }
+  function closeModal(m) {
+    m.classList.remove('active');
+    document.body.style.overflow = '';
+    // сбрасываем ошибку email и кнопку когда закрываем модалку оплаты
+    if (m === consentModal) {
+      emailField.classList.remove('invalid');
+      consentPayBtn.disabled = false;
+      updatePayBtn();
+    }
+  }
 
   // ── CART LOGIC ──
   var PRICES = {1:1590, 2:2890, 3:3790};
@@ -1242,11 +1251,22 @@
     }
     if(consentPayBtn) consentPayBtn.textContent = n ? 'Оплатить — '+fmt(p.total) : 'Выберите сборник';
     if(consentPayBtn) consentPayBtn.disabled = !n || !(emailInput&&EMAIL_RE.test(emailInput.value.trim())) || !(cbPd&&cbPd.checked) || !(cbMail&&cbMail.checked);
+    updateTgMaxVisibility();
   }
 
-  function updateConsentSummary() {
-    syncModalCheckboxes();
+  // ── ТГ/MAX — только если выбран ИСКЛЮЧИТЕЛЬНО book1 ──
+  function updateTgMaxVisibility() {
+    var onlyBook1 = selectedBooks.size === 1 && selectedBooks.has('book1');
+    var block = document.getElementById('tgMaxBlock');
+    if (block) block.classList.toggle('visible', onlyBook1);
+    // enabled только если форма валидна
+    var formOk = emailInput && EMAIL_RE.test(emailInput.value.trim()) && cbPd && cbPd.checked && cbMail && cbMail.checked;
+    [consentTgBtn, consentMaxBtn].forEach(function(btn) {
+      if (btn) btn.classList.toggle('enabled', onlyBook1 && formOk);
+    });
   }
+
+  // updateConsentSummary была просто обёрткой — убрана, используем syncModalCheckboxes напрямую
 
   // Modal checkboxes change → sync with cart
   document.querySelectorAll('.modal-book-cb').forEach(function(cb){
@@ -1277,7 +1297,7 @@
   // Cart buy button
   var cartBuyBtnEl = document.getElementById('cartBuyBtn');
   if(cartBuyBtnEl) cartBuyBtnEl.addEventListener('click', function(){
-    updateConsentSummary(); openModal(consentModal);
+    syncModalCheckboxes(); openModal(consentModal);
   });
 
   // ── Open consent on individual "Купить" buttons ──
@@ -1297,7 +1317,7 @@
         });
         updateCartBar();
       }
-      updateConsentSummary(); openModal(consentModal);
+      syncModalCheckboxes(); openModal(consentModal);
     });
   });
 
@@ -1309,6 +1329,22 @@
   document.getElementById('closeBulion').addEventListener('click', function() { closeModal(bulionModal); });
   bulionModal.addEventListener('click', function(e) { if (e.target === bulionModal) closeModal(bulionModal); });
 
+  // ── Bulion "Купить" → выбрать только book3 и открыть consent ──
+  document.getElementById('bulionBuyBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.book-select-cb').forEach(function(cb) {
+      var on = cb.dataset.book === 'book3';
+      cb.checked = on;
+      var card = cb.closest('.collection-card');
+      if (card) card.classList.toggle('selected', on);
+      if (on) selectedBooks.add(cb.dataset.book); else selectedBooks.delete(cb.dataset.book);
+    });
+    closeModal(bulionModal);
+    updateCartBar();
+    syncModalCheckboxes();
+    openModal(consentModal);
+  });
+
   // ── Email validation with regex ──
   function updatePayBtn() {
     var email = emailInput.value.trim();
@@ -1319,9 +1355,7 @@
     consentPayBtn.disabled = !ok;
     if(n > 0) { var p=cartInfo(n); consentPayBtn.textContent='Оплатить — '+fmt(p.total); }
     else { consentPayBtn.textContent='Выберите сборник'; }
-    [consentTgBtn, consentMaxBtn].forEach(function(btn) {
-      btn.classList.toggle('enabled', ok);
-    });
+    updateTgMaxVisibility();
   }
   [cbPd, cbMail].forEach(function(el) { el.addEventListener('change', updatePayBtn); });
   emailInput.addEventListener('input', updatePayBtn);
@@ -1329,6 +1363,114 @@
   // ── Success modal ──
   document.getElementById('closeSuccess').addEventListener('click', function() { closeModal(successModal); });
   successModal.addEventListener('click', function(e) { if (e.target === successModal) closeModal(successModal); });
+
+
+  // ── Ссылки доступа по каждому сборнику (paid_content в письме) ──
+  var BOOK_ACCESS = {
+    book1: [
+      'Яндекс.Диск — https://disk.yandex.ru/d/2rf28tMSgz39ww',
+      'Telegram    — https://t.me/+ces7gQS4YXA0NmUy',
+      'MAX         — https://max.ru/vera_mlgn_fabrika'
+    ].join('\n'),
+    book2: [
+      'Яндекс.Диск — https://disk.yandex.ru/d/te9AgtT4EAStDw',
+      'Telegram    — https://t.me/+Zt3eZqp11nE1Yzcy',
+      'MAX         — https://max.ru/join/gTuvTth5CzLISz5xxNoCzDe_l3VC3MKXSJPgbhCi97U'
+    ].join('\n'),
+    book3: [
+      'Яндекс.Диск — https://disk.yandex.ru/d/oikdbWIL-K87ew',
+      'Telegram    — https://t.me/+O--vFXmfVmdlOTU6',
+      'MAX         — https://max.ru/join/lXJYHgsflL4L4wpfjkYTZS7DxEjB8Az_sA7xc_lX5IM'
+    ].join('\n')
+  };
+
+  // ── Кнопка «Оплатить» → Продамус ──
+  consentPayBtn.addEventListener('click', function() {
+    if (consentPayBtn.disabled) return;
+    var n = selectedBooks.size;
+    if (!n) return;
+    var p = cartInfo(n);
+    var books = Array.from(selectedBooks);
+
+    // Список купленных сборников для письма
+    var bookList = books.map(function(id) {
+      return '• ' + BOOK_TITLES[id];
+    }).join('\n');
+
+    // Ссылки доступа для каждого купленного сборника
+    var accessParts = books.map(function(id) {
+      return '— ' + BOOK_TITLES[id] + ' —\n' + BOOK_ACCESS[id];
+    }).join('\n\n');
+
+    var paidContent = 'Спасибо за покупку!\n\n' +
+      'Вы приобрели:\n' + bookList + '\n\n' +
+      'Ссылки для доступа к материалам:\n\n' + accessParts + '\n\n' +
+      'Если возникнут вопросы — пишите: zabotaveramlgn@yandex.ru';
+
+    // Передаём каждый сборник отдельным товаром — тогда в письме будет
+    // правильное название, а не дефолтное «Услуги по предоставлению доступа к клубу».
+    // Скидка комплекта передаётся через discount_value.
+    var PRICE_PER_BOOK = 1590;
+    var products = books.map(function(id) {
+      return { name: BOOK_TITLES[id], price: PRICE_PER_BOOK, quantity: 1, type: 'service' };
+    });
+    var fullPrice = books.length * PRICE_PER_BOOK;
+    var discount  = fullPrice - p.total;
+    var initParams = {
+      products:       products,
+      currency:       'rub',
+      customer_email: emailInput.value.trim(),
+      paid_content:   paidContent
+    };
+    if (discount > 0) initParams.discount_value = discount;
+
+    // Защита от двойного клика
+    var origText = consentPayBtn.textContent;
+    consentPayBtn.disabled = true;
+    consentPayBtn.textContent = 'Открываем оплату…';
+
+    // Запуск виджета: если async-скрипт ещё не загрузился — ждём
+    function tryPayform(attemptsLeft) {
+      if (typeof window.payformInit === 'function') {
+        window.payformInit('vera-mlgn.payform.ru', initParams);
+        closeModal(consentModal);
+      } else if (attemptsLeft > 0) {
+        setTimeout(function() { tryPayform(attemptsLeft - 1); }, 400);
+      } else {
+        // Скрипт не загрузился — восстанавливаем кнопку и сообщаем об ошибке
+        consentPayBtn.disabled = false;
+        consentPayBtn.textContent = origText;
+        alert('Не удалось загрузить платёжный виджет. Проверьте соединение и попробуйте снова.');
+      }
+    }
+    tryPayform(8); // до 8 попыток × 400 мс = 3.2 секунды ожидания
+  });
+
+  // ── Закрытие модалок по Escape ──
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    var order = [successModal, consentModal, bulionModal];
+    for (var i = 0; i < order.length; i++) {
+      if (order[i].classList.contains('active')) { closeModal(order[i]); break; }
+    }
+  });
+
+  // ── Focus trap: Tab не выходит за пределы открытой модалки ──
+  var FOCUSABLE = 'button:not([disabled]),[href],input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
+  function trapFocus(modal) {
+    modal.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      var nodes = Array.prototype.slice.call(modal.querySelectorAll(FOCUSABLE));
+      if (!nodes.length) return;
+      var first = nodes[0], last = nodes[nodes.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+  [consentModal, successModal, bulionModal].forEach(trapFocus);
 
   // ── Prodamus postMessage (origin-validated) ──
   window.addEventListener('message', function(event) {
