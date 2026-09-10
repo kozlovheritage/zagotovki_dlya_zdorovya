@@ -4,6 +4,6 @@
   "private": true,
   "description": "Статический сайт «Заготовки для здоровья»",
   "scripts": {
-    "build": "node -e \"console.log('Static site: no build required')\""
+    "build": "node -e \"const fs=require('fs'); fs.mkdirSync('dist',{recursive:true}); fs.copyFileSync('index.html','dist/index.html'); console.log('Static site copied to dist/')\""
   }
 }
